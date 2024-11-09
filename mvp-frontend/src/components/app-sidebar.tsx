@@ -1,8 +1,9 @@
 import * as React from "react"
-import { ChevronRight } from "lucide-react"
+import { AudioWaveform, Command, ChevronRight, LifeBuoy, Send } from "lucide-react"
 
-import { SearchForm } from "@/components/search-form"
-import { VersionSwitcher } from "@/components/version-switcher"
+import { NavUser } from "@/components/nav-user"
+import { NavSecondary } from "@/components/nav-secondary"
+import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Collapsible,
   CollapsibleContent,
@@ -19,146 +20,77 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
+  SidebarFooter
 } from "@/components/ui/sidebar"
 
-// This is sample data.
 const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
+  user: {
+    name: "Test User",
+    email: "test@example.com",
+    avatar: "/avatars/shadcn.jpg",
+  },
+  teams: [
+    {
+      name: "Galileo Launch",
+      logo: Command,
+      plan: "Enterprise",
+    },
+    {
+      name: "AI Social Media",
+      logo: AudioWaveform,
+      plan: "Startup",
+    },
+  ],
   navMain: [
     {
-      title: "Getting Started",
+      title: "Title 1",
       url: "#",
       items: [
         {
-          title: "Installation",
+          title: "Subtitle 1",
           url: "#",
         },
         {
-          title: "Project Structure",
+          title: "Subtitle 2",
           url: "#",
         },
       ],
     },
     {
-      title: "Building Your Application",
+      title: "Title 2",
       url: "#",
       items: [
         {
-          title: "Routing",
+          title: "Subtitle 1",
           url: "#",
         },
         {
-          title: "Data Fetching",
+          title: "Subtitle 2",
           url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
-          url: "#",
-        },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
-        },
+        }
       ],
     },
     {
-      title: "API Reference",
+      title: "Title 3",
       url: "#",
       items: [
         {
-          title: "Components",
+          title: "Subtitle 1",
           url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
+        }
       ],
+    }
+  ],
+  navSecondary: [
+    {
+      title: "Support",
+      url: "#",
+      icon: LifeBuoy,
     },
     {
-      title: "Architecture",
+      title: "Feedback",
       url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
-          url: "#",
-        },
-      ],
+      icon: Send,
     },
   ],
 }
@@ -167,11 +99,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <VersionSwitcher
-          versions={data.versions}
-          defaultVersion={data.versions[0]}
-        />
-        <SearchForm />
+        <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent className="gap-0">
         {/* We create a collapsible SidebarGroup for each parent. */}
@@ -208,8 +136,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarGroup>
           </Collapsible>
         ))}
+        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarRail />
+      <SidebarFooter>
+        <NavUser user={data.user} />
+      </SidebarFooter>
     </Sidebar>
   )
 }

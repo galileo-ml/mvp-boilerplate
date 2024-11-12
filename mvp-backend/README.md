@@ -16,6 +16,10 @@ Note: This setup is for Mac users. A future item will include other operating sy
 
 In order to call routes to your backend, you can download a free service like Postman to send requests.
 
+### Install Docker Desktop
+
+[Docker Desktop Download](https://www.docker.com/products/docker-desktop/)
+
 ### Create .env file
 
 Create a .env file under mvp-backend to configure your local dev env variables
@@ -30,6 +34,8 @@ BACKEND_CORS_ORIGINS="http://localhost,http://localhost:5173,https://localhost,h
 OPENAI_API_KEY="<API_KEY_HERE>
 
 # Supabase
+
+[Install Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started?queryGroups=access-method&access-method=postgres&queryGroups=platform&platform=macos)
 
 # SUPABASE_URL = "http://localhost:54321"
 # SUPABASE_KEY = "your-service-role-key"

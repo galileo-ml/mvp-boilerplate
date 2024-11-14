@@ -14,7 +14,10 @@ def parse_cors(v: Any) -> list[str] | str:
     raise ValueError(v)
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file="../.env")
+    model_config = SettingsConfigDict(
+        env_file="../.env",
+        extra="ignore"  # Ignores any extra env variables in the .env file
+        )
 
     # External API Keys. Comment out as needed.
     OPENAI_API_KEY: str

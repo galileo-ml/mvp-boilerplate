@@ -24,19 +24,14 @@ import {
 } from "@/components/ui/sidebar"
 
 const data = {
-  user: {
-    name: "Test User",
-    email: "test@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   teams: [
     {
-      name: "Galileo Launch",
+      name: "Company 1",
       logo: Command,
       plan: "Enterprise",
     },
     {
-      name: "AI Social Media",
+      name: "Company 2",
       logo: AudioWaveform,
       plan: "Startup",
     },
@@ -102,7 +97,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent className="gap-0">
-        {/* We create a collapsible SidebarGroup for each parent. */}
         {data.navMain.map((item) => (
           <Collapsible
             key={item.title}
@@ -140,7 +134,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   )

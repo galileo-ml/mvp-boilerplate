@@ -5,6 +5,7 @@ import {
   Bell,
   ChevronsUpDown,
   CreditCard,
+  LogIn,
   LogOut,
   Sparkles,
 } from "lucide-react"
@@ -29,17 +30,28 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button";
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
-}) {
+import { useAuth } from '@/components/auth/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+
+export function NavUser() {
+  const { user, logout } = useAuth();
   const { isMobile } = useSidebar()
+  const navigate = useNavigate();
+
+  if (!user) {
+    return (
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <Button variant="outline" className="w-full" onClick={() => navigate('/login') }>
+            <LogIn className="mr-2 h-4 w-4" />
+            Login
+          </Button>
+        </SidebarMenuItem>
+      </SidebarMenu>
+    );
+  }
 
   return (
     <SidebarMenu>
@@ -102,7 +114,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={logout}>
               <LogOut />
               Log out
             </DropdownMenuItem>

@@ -45,4 +45,4 @@ OPENAI_API_KEY="<API_KEY_HERE>
 
 ## Dev Workflow
 
-1. `uvicorn main:app --reload` (starts BE)
+1. `uvicorn main:app --reload` (starts backend)

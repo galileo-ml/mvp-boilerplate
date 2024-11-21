@@ -9,6 +9,8 @@
 - Title --> What your service does + the problem it selves
 - Subtitle --> Expand on the title. What benefits does your service give.
 - Call to Action --> Book a demo, Signup, Waitlist
+1. More Social Proof [Testimonials]
+1. Features
 1. Footer
 
 ## Helpful Links

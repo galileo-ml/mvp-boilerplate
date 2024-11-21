@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
 export function NavBar({
   className,
@@ -13,9 +14,17 @@ export function NavBar({
       {...props}
     >
       <div className="container flex h-14 max-w-screen-2xl items-center">
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-start">
+        <div className="flex flex-1 items-center justify-between">
           <div className="font-inter font-semibold text-xl">
             Your Company Name
+          </div>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" className="text-sm font-medium">
+              Login
+            </Button>
+            <Button className="bg-black text-white hover:bg-black/90">
+              Sign up
+            </Button>
           </div>
         </div>
       </div>

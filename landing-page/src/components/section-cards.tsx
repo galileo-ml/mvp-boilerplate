@@ -23,13 +23,13 @@ import {
   
   export function SectionCards() {
     return (
-      <section className="container py-12 md:py-24 lg:py-32">
+      <section className="container py-8 md:py-16 lg:py-24">
         <div className="mx-auto flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             What Company Offers You
           </h2>
         </div>
-        <div className="mx-auto mt-12 sm:mt-16 lg:mt-20 grid gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+        <div className="mx-auto mt-8 sm:mt-12 lg:mt-16 grid gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
           {cards.map((section) => (
             <Card key={section.title} className="flex flex-col">
               <CardHeader>

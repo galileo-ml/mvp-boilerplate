@@ -21,3 +21,17 @@ The frontend uses Typescript, React, Vite, Tailwind, Shadcn.
 ## mvp-backend
 
 The backend uses Python, FastAPI, Supabase.
+
+## Contributing
+
+For contributing to the codebase, please fork the repo. 
+
+Add the main git branch via (if using SSH)
+
+```
+git remote add upstream git@github.com:galileo-ml/mvp-boilerplate.git
+```
+
+1. Check out a branch in your local repo copy --> git checkout -b {branch_name}
+1. Open a PR that goes from your local branch into the mvp-boilerplate repo.
+1. Add @jakeatgalileo as a reviewer

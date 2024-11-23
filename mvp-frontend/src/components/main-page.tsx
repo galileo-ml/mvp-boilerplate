@@ -14,6 +14,9 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
+
+// TODO: The main page will host the bulk of the application logic. 
+// A person's MVP will likely go here as a component.
 export function MainPage() {
   return (
     <SidebarProvider>

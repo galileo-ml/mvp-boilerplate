@@ -23,6 +23,9 @@ import {
   SidebarFooter
 } from "@/components/ui/sidebar"
 
+
+// TODO: This will likely be populated by the backend based on the user.
+// TODO: Have the ability to add different sidebar sections.
 const data = {
   teams: [
     {

@@ -14,7 +14,7 @@ The Frontend MVP Template. A lot of this code is just stitched together shadcn e
 ### Getting Started
 
 ```
-npm i
+npm install
 npm run dev
 ```
 

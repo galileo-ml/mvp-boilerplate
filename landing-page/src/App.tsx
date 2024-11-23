@@ -2,6 +2,7 @@ import { NavBar } from "@/components/nav-bar"
 import { Footer } from "@/components/footer"
 import { Hero } from "@/components/hero"
 import { SectionCards } from "@/components/section-cards"
+import { Testimonials } from "@/components/testimonials"
 
 import './App.css'
 
@@ -12,6 +13,7 @@ function App() {
       <main className="flex-1">
         <Hero />
         <SectionCards />
+        <Testimonials />
       </main>
       <Footer />
     </div>

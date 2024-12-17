@@ -3,6 +3,9 @@ import { Footer } from "@/components/footer"
 import { Hero } from "@/components/hero"
 import { SectionCards } from "@/components/section-cards"
 import { Testimonials } from "@/components/testimonials"
+import { Pricing } from "@/components/pricing"
+import { FAQ } from "@/components/faq"
+import { CallToAction } from "@/components/call-to-action"
 
 import './App.css'
 
@@ -14,6 +17,9 @@ function App() {
         <Hero />
         <SectionCards />
         <Testimonials />
+        <Pricing />
+        <FAQ />
+        <CallToAction />
       </main>
       <Footer />
     </div>

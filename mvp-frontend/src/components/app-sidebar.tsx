@@ -1,14 +1,8 @@
 import * as React from "react"
-import { AudioWaveform, Command, ChevronRight, LifeBuoy, Send } from "lucide-react"
+import { LifeBuoy, Send } from "lucide-react"
 
 import { NavUser } from "@/components/nav-user"
 import { NavSecondary } from "@/components/nav-secondary"
-import { TeamSwitcher } from "@/components/team-switcher"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -22,61 +16,19 @@ import {
   SidebarRail,
   SidebarFooter
 } from "@/components/ui/sidebar"
+import { User } from "@supabase/supabase-js"
 
-
-// TODO: This will likely be populated by the backend based on the user.
-// TODO: Have the ability to add different sidebar sections.
 const data = {
-  teams: [
-    {
-      name: "Company 1",
-      logo: Command,
-      plan: "Enterprise",
-    },
-    {
-      name: "Company 2",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-  ],
   navMain: [
     {
-      title: "Title 1",
-      url: "#",
+      title: "Main TItle",
+      url: "/",
       items: [
         {
-          title: "Subtitle 1",
-          url: "#",
-        },
-        {
-          title: "Subtitle 2",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Title 2",
-      url: "#",
-      items: [
-        {
-          title: "Subtitle 1",
-          url: "#",
-        },
-        {
-          title: "Subtitle 2",
+          title: "Subtitle",
           url: "#",
         }
-      ],
-    },
-    {
-      title: "Title 3",
-      url: "#",
-      items: [
-        {
-          title: "Subtitle 1",
-          url: "#",
-        }
-      ],
+      ]
     }
   ],
   navSecondary: [
@@ -93,51 +45,56 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  user: User
+}
+
+export function AppSidebar({ user, ...props }: AppSidebarProps) {
+  
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <a href="#">
+                <div className="flex flex-col gap-0.5 leading-none">
+                  <span className="font-semibold">Company</span>
+                  <span className="">v0.0.1</span>
+                </div>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent className="gap-0">
-        {data.navMain.map((item) => (
-          <Collapsible
-            key={item.title}
-            title={item.title}
-            defaultOpen
-            className="group/collapsible"
-          >
-            <SidebarGroup>
-              <SidebarGroupLabel
-                asChild
-                className="group/label text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-              >
-                <CollapsibleTrigger>
-                  {item.title}{" "}
-                  <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
-                </CollapsibleTrigger>
-              </SidebarGroupLabel>
-              <CollapsibleContent>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    {item.items.map((item) => (
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    ))}
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </CollapsibleContent>
-            </SidebarGroup>
-          </Collapsible>
-        ))}
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {data.navMain.map((item) => (
+                <SidebarGroup key={item.title}>
+                  <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      {item.items.map((item) => (
+                        <SidebarMenuItem key={item.title}>
+                          <SidebarMenuButton asChild>
+                            <a href={item.url}>{item.title}</a>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                      ))}
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </SidebarGroup>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarRail />
       <SidebarFooter>
-        <NavUser />
+        <NavUser user={user}/>
       </SidebarFooter>
     </Sidebar>
   )

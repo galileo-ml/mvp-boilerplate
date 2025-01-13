@@ -25,11 +25,6 @@ In order to call routes to your backend, you can download a free service like Po
 Create a .env file under mvp-backend to configure your local dev env variables
 
 ```
-# DOMAIN=localhost
-# FRONTEND_HOST=http://localhost:5173
-
-# Environment: local, staging, production
-# ENVIRONMENT=local
 BACKEND_CORS_ORIGINS="http://localhost,http://localhost:5173,https://localhost,https://localhost:5173
 OPENAI_API_KEY="<API_KEY_HERE>
 

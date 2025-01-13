@@ -16,7 +16,7 @@ There is more specific documentation in the frontend and backend in their respec
 
 ## mvp-frontend
 
-The frontend uses Typescript, React, Vite, Tailwind, Shadcn.
+The frontend uses Typescript, React, NextJS, Tailwind, Shadcn.
 
 ## mvp-backend
 

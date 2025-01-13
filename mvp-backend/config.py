@@ -22,9 +22,7 @@ class Settings(BaseSettings):
     # External API Keys. Comment out as needed.
     OPENAI_API_KEY: str
 
-    ENVIRONMENT: Literal["local", "staging", "production"] = "local"
     
-    FRONTEND_HOST: str = "http://localhost:5173"
     BACKEND_CORS_ORIGINS: Annotated[
         list[AnyUrl] | str, BeforeValidator(parse_cors)
     ] = []
@@ -35,8 +33,6 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def all_cors_origins(self) -> list[str]:
-        return [str(origin).rstrip("/") for origin in self.BACKEND_CORS_ORIGINS] + [
-            self.FRONTEND_HOST
-        ]
+        return [str(origin).rstrip("/") for origin in self.BACKEND_CORS_ORIGINS]
 
 settings = Settings()

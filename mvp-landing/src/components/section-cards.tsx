@@ -10,16 +10,16 @@ import {
 
 const cards = [
   {
-    title: "AI Agents for Video Analysis",
-    description: "AI Agents search thousands of channels to find content aligned with your creative interest",
+    title: "Benefit 1",
+    description: "Description of the first major Benefit or benefit your product offers.",
   },
   {
-    title: "AI Powered Insights",
-    description: "Discover the latest trends of thumbnails and titles from popular videos on relevant channels",
+    title: "Benefit 2",
+    description: "Description of the second major Benefit or benefit your product offers.",
   },
   {
-    title: "Thumbnail Optimization",
-    description: "Skip the manual research—let our AI handle it, delivering insights that highlight what’s popular now",
+    title: "Benefit 3",
+    description: "Description of the third major Benefit or benefit your product offers.",
   },
 ]
 

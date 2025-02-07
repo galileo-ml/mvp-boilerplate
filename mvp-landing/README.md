@@ -24,6 +24,18 @@ Make sure to install the required node_modules on the first setup. Then you shou
 1. npm install
 1. npm run dev
 
+### Env Variables
+
+Create a env.local to hold local keys. Current env variables you will need are
+
+```
+NEXT_PUBLIC_LOGIN_URL=http://localhost:3000/login
+RESEND_API_KEY=RESENDKEY
+NEXT_PUBLIC_GA_ID=G-KEY
+```
+
+You may need to create Resend and Google Analytics accounts to get the keys. These are optional.
+
 ## Deployment
 
 1. Create an account on Vercel. The personal tier should be provide you a link to try this out.

@@ -33,7 +33,7 @@ OPENAI_API_KEY="<API_KEY_HERE>
 [Install Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started?queryGroups=access-method&access-method=postgres&queryGroups=platform&platform=macos)
 
 # SUPABASE_URL = "http://localhost:54321"
-# SUPABASE_KEY = "your-service-role-key"
+# SUPABASE_SERVICE_ROLE_KEY = "your-service-role-key"
 
 # Any other external environment variables.
 ```

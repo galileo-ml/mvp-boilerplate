@@ -13,25 +13,24 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { login } from "@/app/login/actions";
-import { supabase } from "@/lib/supabase"
+import { useAuth } from "@/context/AuthContext";
 
 export function LoginForm() {
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter()
+  const { login, user } = useAuth();
 
   useEffect(() => {
-    const checkUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        router.push('/')
-      }
+    if (user) {
+      router.push('/');
     }
-
-    checkUser()
-  }, [router])
+  }, [user, router]);
 
   async function onSubmit(formData: FormData) {
+    setError(null)
+    setIsLoading(true);
+
     try {
       const result = await login(formData)
       
@@ -39,12 +38,18 @@ export function LoginForm() {
         setError(result.error)
         return
       }
-  
-      // Only redirect on success
+
       router.push('/')
-    } catch {
+    } catch (error) {
       setError('An error occurred during login')
+      console.error('Login error:', error)
+    } finally {
+      setIsLoading(false)
     }
+  }
+
+  if (user) {
+    return null;
   }
 
   return (
@@ -84,10 +89,9 @@ export function LoginForm() {
           {error && (
             <p className="text-sm text-red-500 text-center">{error}</p>
           )}
-          <Button type="submit" className="w-full">
-            Login
+          <Button type="submit" disabled={isLoading} className="w-full">
+            {isLoading ? 'Signing in...' : 'Sign In'}
           </Button>
-          {/* Google Login Not Tested Yet */}
           {/* <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />

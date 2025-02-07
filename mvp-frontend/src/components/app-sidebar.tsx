@@ -16,7 +16,9 @@ import {
   SidebarRail,
   SidebarFooter
 } from "@/components/ui/sidebar"
-import { User } from "@supabase/supabase-js"
+
+import Link from 'next/link'
+import Image from 'next/image'
 
 const data = {
   navMain: [
@@ -45,24 +47,27 @@ const data = {
   ],
 }
 
-interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
-  user: User
-}
-
-export function AppSidebar({ user, ...props }: AppSidebarProps) {
+export function AppSidebar() {
   
   return (
-    <Sidebar {...props}>
+    <Sidebar >
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <Link href="/">
+                <Image
+                  src="/icon.png"
+                  alt="Company"
+                  width={32}
+                  height={32}
+                  className="rounded-lg"
+                />
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="font-semibold">Company</span>
                   <span className="">v0.0.1</span>
                 </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -79,7 +84,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
                       {item.items.map((item) => (
                         <SidebarMenuItem key={item.title}>
                           <SidebarMenuButton asChild>
-                            <a href={item.url}>{item.title}</a>
+                            <Link href="/">{item.title}</Link>
                           </SidebarMenuButton>
                         </SidebarMenuItem>
                       ))}
@@ -94,7 +99,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
       </SidebarContent>
       <SidebarRail />
       <SidebarFooter>
-        <NavUser user={user}/>
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   )
